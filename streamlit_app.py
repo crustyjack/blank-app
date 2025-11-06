@@ -92,10 +92,18 @@ def feedback_form(sheet_name: str, table_name: str, add_email: bool = False):
 # --- Read main tables ---
 df_gebouw = get_sheet_dataframe("Gebouwdeomgeving")
 df_gebouw["URL:"] = df_gebouw["URL:"].apply(lambda x: f"[{x}]({x})")
+
 df_mobiliteit = get_sheet_dataframe("Mobiliteit")
+df_mobiliteit["URL:"] = df_mobiliteit["URL:"].apply(lambda x: f"[{x}]({x})")
+
 df_bedrijven = get_sheet_dataframe("Bedrijventerrein")
+df_bedrijven["URL:"] = df_bedrijven["URL:"].apply(lambda x: f"[{x}]({x})")
+
 df_cluster6 = get_sheet_dataframe("Cluster 6")
+df_cluster6["URL:"] = df_cluster6["URL:"].apply(lambda x: f"[{x}]({x})")
+
 df_andere = get_sheet_dataframe("Andere")
+df_andere["URL:"] = df_andere["URL:"].apply(lambda x: f"[{x}]({x})")
 
 # --- Display tables ---
 st.set_page_config(layout="wide")   # allow app to use full browser width
@@ -107,17 +115,25 @@ st.dataframe(df_gebouw, use_container_width=True, column_config={
 feedback_form("Feedback_Gebouwdeomgeving", "Gebouwdeomgeving", add_email=True)
 
 st.subheader("🚗 Mobiliteit")
-st.table(df_mobiliteit)
+st.dataframe(df_mobiliteit, use_container_width=True, column_config={
+    "URL:": st.column_config.LinkColumn("URL:")
+})
 feedback_form("Feedback_Mobiliteit", "Mobiliteit", add_email=True)
 
 st.subheader("🚗 Bedrijventerrein")
-st.table(df_bedrijven)
+st.dataframe(df_bedrijven, use_container_width=True, column_config={
+    "URL:": st.column_config.LinkColumn("URL:")
+})
 feedback_form("Feedback_Bedrijventerrein", "Bedrijventerrein", add_email=True)
 
 st.subheader("🚗 Cluster 6")
-st.table(df_cluster6)
+st.dataframe(df_cluster6, use_container_width=True, column_config={
+    "URL:": st.column_config.LinkColumn("URL:")
+})
 feedback_form("Feedback_Cluster6", "Cluster 6", add_email=True)
 
 st.subheader("🚗 Andere")
-st.table(df_andere)
+st.dataframe(df_andere, use_container_width=True, column_config={
+    "URL:": st.column_config.LinkColumn("URL:")
+})
 feedback_form("Feedback_Andere", "Andere", add_email=True)
