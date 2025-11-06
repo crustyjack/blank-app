@@ -102,7 +102,7 @@ st.set_page_config(layout="wide")   # allow app to use full browser width
 
 st.subheader("🏠 Gebouwde omgeving")
 st.dataframe(df_gebouw, use_container_width=True, column_config={
-    "Website": st.column_config.LinkColumn("Website")
+    "URL:": st.column_config.LinkColumn("URL:")
 })
 feedback_form("Feedback_Gebouwdeomgeving", "Gebouwdeomgeving", add_email=True)
 
