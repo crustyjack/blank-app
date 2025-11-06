@@ -91,15 +91,19 @@ def feedback_form(sheet_name: str, table_name: str, add_email: bool = False):
 
 # --- Read main tables ---
 df_gebouw = get_sheet_dataframe("Gebouwdeomgeving")
+df_gebouw["URL"] = df_gebouw["URL"].apply(lambda x: f"[{x}]({x})")
 df_mobiliteit = get_sheet_dataframe("Mobiliteit")
 df_bedrijven = get_sheet_dataframe("Bedrijventerrein")
 df_cluster6 = get_sheet_dataframe("Cluster 6")
 df_andere = get_sheet_dataframe("Andere")
 
 # --- Display tables ---
-st.subheader("🏠 Gebouwde omgeving")
 st.set_page_config(layout="wide")   # allow app to use full browser width
-st.dataframe(df_gebouw, use_container_width=True)
+
+st.subheader("🏠 Gebouwde omgeving")
+st.dataframe(df, use_container_width=True, column_config={
+    "Website": st.column_config.LinkColumn("Website")
+})
 feedback_form("Feedback_Gebouwdeomgeving", "Gebouwdeomgeving", add_email=True)
 
 st.subheader("🚗 Mobiliteit")
