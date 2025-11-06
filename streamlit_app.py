@@ -91,7 +91,7 @@ def feedback_form(sheet_name: str, table_name: str, add_email: bool = False):
 
 # --- Read main tables ---
 df_gebouw = get_sheet_dataframe("Gebouwdeomgeving")
-df_gebouw["URL"] = df_gebouw["URL"].apply(lambda x: f"[{x}]({x})")
+df_gebouw["URL:"] = df_gebouw["URL:"].apply(lambda x: f"[{x}]({x})")
 df_mobiliteit = get_sheet_dataframe("Mobiliteit")
 df_bedrijven = get_sheet_dataframe("Bedrijventerrein")
 df_cluster6 = get_sheet_dataframe("Cluster 6")
