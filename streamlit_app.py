@@ -98,7 +98,7 @@ df_andere = get_sheet_dataframe("Andere")
 
 # --- Display tables ---
 st.subheader("🏠 Gebouwde omgeving")
-st.dataframe(df_gebouw, use_container_width=True)
+st.dataframe(df_gebouw, width=True)
 feedback_form("Feedback_Gebouwdeomgeving", "Gebouwdeomgeving", add_email=True)
 
 st.subheader("🚗 Mobiliteit")
