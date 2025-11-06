@@ -98,7 +98,8 @@ df_andere = get_sheet_dataframe("Andere")
 
 # --- Display tables ---
 st.subheader("🏠 Gebouwde omgeving")
-st.dataframe(df_gebouw, width=True)
+st.set_page_config(layout="wide")   # allow app to use full browser width
+st.dataframe(df_gebouw, use_container_width=True)
 feedback_form("Feedback_Gebouwdeomgeving", "Gebouwdeomgeving", add_email=True)
 
 st.subheader("🚗 Mobiliteit")
