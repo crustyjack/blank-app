@@ -4,7 +4,9 @@ from datetime import datetime
 import gspread
 from google.oauth2.service_account import Credentials
 
-st.title("🎈 My Streamlit App with Feedback")
+st.title("⚡ Energiehub database ⚡")
+st.subheader("Contact: Michael Jenks | m.j.f.jenks@hva.nl")
+st.subheader("Hogeschool van Amsterdam")
 
 # --- Google Sheets setup ---
 SERVICE_ACCOUNT_FILE = "hybrid-sentry-477409-a3-969ace30f310.json"  # Path to your JSON
@@ -69,12 +71,12 @@ def feedback_form(sheet_name: str, table_name: str, add_email: bool = False):
     
     # Display the feedback form
     with st.form(f"feedback_form_{sheet_name}"):
-        st.write(f"💬 Feedback on {table_name}")
-        name = st.text_input("Your name (optional):", key=f"name_{sheet_name}")
+        st.write(f"💬 Feedback voor {table_name}")
+        name = st.text_input("Uw naam (optioneel):", key=f"name_{sheet_name}")
         if add_email:
-            email = st.text_input("Your email address (optional):", key=f"email_{sheet_name}")
-        feedback = st.text_area("Your feedback:", key=f"feedback_{sheet_name}")
-        submitted = st.form_submit_button("Submit feedback")
+            email = st.text_input("Uw email adres (optioneel):", key=f"email_{sheet_name}")
+        feedback = st.text_area("Uw feedback:", key=f"feedback_{sheet_name}")
+        submitted = st.form_submit_button("Feedback indienen")
 
         if submitted and feedback.strip() != "":
             # Prepare the row data
