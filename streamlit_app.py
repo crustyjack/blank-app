@@ -91,19 +91,19 @@ def feedback_form(sheet_name: str, table_name: str, add_email: bool = False):
 
 # --- Read main tables ---
 df_gebouw = get_sheet_dataframe("Gebouwdeomgeving")
-df_gebouw["URL:"] = df_gebouw["URL:"].apply(lambda x: f"[{x}]({x})")
+#df_gebouw["URL:"] = df_gebouw["URL:"].apply(lambda x: f"[{x}]({x})")
 
 df_mobiliteit = get_sheet_dataframe("Mobiliteit")
-df_mobiliteit["URL:"] = df_mobiliteit["URL:"].apply(lambda x: f"[{x}]({x})")
+#df_mobiliteit["URL:"] = df_mobiliteit["URL:"].apply(lambda x: f"[{x}]({x})")
 
 df_bedrijven = get_sheet_dataframe("Bedrijventerrein")
-df_bedrijven["URL:"] = df_bedrijven["URL:"].apply(lambda x: f"[{x}]({x})")
+#df_bedrijven["URL:"] = df_bedrijven["URL:"].apply(lambda x: f"[{x}]({x})")
 
 df_cluster6 = get_sheet_dataframe("Cluster 6")
-df_cluster6["URL:"] = df_cluster6["URL:"].apply(lambda x: f"[{x}]({x})")
+#df_cluster6["URL:"] = df_cluster6["URL:"].apply(lambda x: f"[{x}]({x})")
 
 df_andere = get_sheet_dataframe("Andere")
-df_andere["URL:"] = df_andere["URL:"].apply(lambda x: f"[{x}]({x})")
+#df_andere["URL:"] = df_andere["URL:"].apply(lambda x: f"[{x}]({x})")
 
 # --- Display tables ---
 st.set_page_config(layout="wide")   # allow app to use full browser width
