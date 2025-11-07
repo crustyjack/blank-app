@@ -122,19 +122,19 @@ st.dataframe(df_mobiliteit, use_container_width=True, column_config={
 })
 feedback_form("Feedback_Mobiliteit", "Mobiliteit", add_email=True)
 
-st.subheader("🚗 Bedrijventerrein")
+st.subheader("🏭🏢 Bedrijventerrein")
 st.dataframe(df_bedrijven, use_container_width=True, column_config={
     "URL:": st.column_config.LinkColumn("URL:")
 })
 feedback_form("Feedback_Bedrijventerrein", "Bedrijventerrein", add_email=True)
 
-st.subheader("🚗 Cluster 6")
+st.subheader("🏭 Cluster 6")
 st.dataframe(df_cluster6, use_container_width=True, column_config={
     "URL:": st.column_config.LinkColumn("URL:")
 })
 feedback_form("Feedback_Cluster6", "Cluster 6", add_email=True)
 
-st.subheader("🚗 Andere")
+st.subheader("⍰ Andere")
 st.dataframe(df_andere, use_container_width=True, column_config={
     "URL:": st.column_config.LinkColumn("URL:")
 })
