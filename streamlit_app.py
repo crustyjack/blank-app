@@ -1,8 +1,33 @@
+import gspread
+import requests
+
 import streamlit as st
 import pandas as pd
+
 from datetime import datetime
-import gspread
 from google.oauth2.service_account import Credentials
+from PIL import Image, ImageOps
+from io import BytesIO
+
+# --- Image function set up ---
+def image_converter(URL, R, G, B, A, width=None):
+    response = requests.get(URL)
+    image = Image.open(BytesIO(response.content)).convert("RGBA")
+    background = Image.new("RGBA", image.size, (R, G, B, A))
+    background.paste(image, (0,0), image)
+    final_image = background.convert("RGB")
+
+    if width:
+        w, h = final_image.size
+        ratio = width / w
+        new_height = int(h * ratio)
+        final_image = final_image.resize((width, new_height), Image.LANCZOS)
+
+    return final_image
+
+# --- Headings and logos ---
+LEVE_logo_url = "https://lectorenplatformleve.nl/wp-content/uploads/2021/11/image.png-4.png"
+st.image(image_converter(LEVE_logo_url, 118, 163, 206, 255, 400))
 
 st.title("⚡ Energiehub database ⚡")
 st.subheader("Contact: Michael Jenks | m.j.f.jenks@hva.nl")
@@ -24,6 +49,9 @@ SPREADSHEET_ID = "1R9dchyFwr_PplMguXJbInBtQaQ8zUAMNION3eb__QqQ"
 spreadsheet = gc.open_by_key(SPREADSHEET_ID)
 
 # --- Helper Functions ---
+
+
+
 def get_sheet_dataframe(sheet_name):
     """Read a worksheet into a DataFrame."""
     try:
@@ -139,3 +167,13 @@ st.dataframe(df_andere, use_container_width=True, column_config={
     "URL:": st.column_config.LinkColumn("URL:")
 })
 feedback_form("Feedback_Andere", "Andere", add_email=True)
+
+# --- Final logos from participating Hogescholen ---
+Hanze_logo_url = "https://lectorenplatformleve.nl/wp-content/uploads/2024/09/HAN-UAS_Logo2024_rgb_pos.png"
+st.image(image_converter(Hanze_logo_url, 255, 255, 255, 255, 400))
+
+HvA_logo_url = "https://lectorenplatformleve.nl/wp-content/uploads/2021/11/HvA.jpg"
+st.image(image_converter(HvA_logo_url, 255, 255, 255, 255, 400))
+
+Windesheim_logo_url = "https://lectorenplatformleve.nl/wp-content/uploads/2021/11/Windesheim_logo_ZG_RGB-DEF-400px.png"
+st.image(image_converter(Windesheim_logo_url, 255, 255, 255, 255, 400))
